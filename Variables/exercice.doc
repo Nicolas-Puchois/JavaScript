@@ -12,7 +12,7 @@ alert(admin);
 
 Exercice 2 :
 
-let ourplanet = 'Terre';
+let notreplanet = 'Terre';
 let actualvisitor;
 
 

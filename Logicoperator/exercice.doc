@@ -44,4 +44,52 @@ if (-1 && 0) alert( 'second' ); --> ne s'éxécute pas car 0 est faux
 if (null || -1 && 1) alert( 'third' ); --> (-1&&1) renvoie 1 car les deux sont vrai, renvoie la dernière valeur.
 (null||1) est vrai car 1 est vrai. renvoie donc l'alerte
 
+
+
 Exercice 9:
+
+let login = prompt("Nom d'utilisateur","");
+let password = prompt("Mot de passe","");
+
+
+
+if(login == "Admin"){
+    if(password == TheMaster){
+        alert("Welcome!");
+    }
+    else if(password){
+        alert("Wrong password")
+    }
+    else if (password || null){
+        alert("Canceled");
+    }
+}
+else if(login || null){
+    alert("I don't know you");
+}
+else{
+    alert("Canceled");
+}
+
+
+correction : 
+
+let userName = prompt("Who's there?", '');
+
+if (userName === 'Admin') {
+
+  let pass = prompt('Password?', '');
+
+  if (pass === 'TheMaster') {
+    alert( 'Welcome!' );
+  } else if (pass === '' || pass === null) {
+    alert( 'Canceled' );
+  } else {
+    alert( 'Wrong password' );
+  }
+
+} else if (userName === '' || userName === null) {
+  alert( 'Canceled' );
+} else {
+  alert( "I don't know you" );
+}

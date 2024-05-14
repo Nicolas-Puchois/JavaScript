@@ -1,0 +1,24 @@
+Exercice 1 :
+
+let admin;
+let name;
+
+name = 'John';
+admin = name;
+
+alert(admin);
+
+
+
+Exercice 2 :
+
+let ourplanet = 'Terre';
+let actualvisitor;
+
+
+Exercice 3 :
+
+les deux doivent être en minuscule afin car la "constante" 'AGE' n'est pas vraiment constante. Afin de mieux
+voir on homogénéise les noms.
+
+correction --> "Birthday" peut être en capital | "AGE" doit être garder en minuscule

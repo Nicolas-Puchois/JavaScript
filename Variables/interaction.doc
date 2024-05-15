@@ -1,5 +1,0 @@
-Exercice 
-
-let name = prompt("Write your name please","John");
-
-alert(name);

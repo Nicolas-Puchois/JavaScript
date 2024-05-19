@@ -1,47 +1,78 @@
-/*
-Somme des nombres saisis
-importance: 4
+/**
+ Un sous-tableau maximal
+importance: 2
 
-Écrivez la fonction sumInput() qui :
+L’entrée est un tableau de nombres, par exemple arr = [1, -2, 3, 4, -9, 6].
 
-    Demande à l’utilisateur des valeurs utilisant prompt et stocke les valeurs dans le tableau.
-    Finit de demander lorsque l’utilisateur entre une valeur non numérique, une chaîne vide ou appuie sur “Annuler”.
-    Calcule et retourne la somme des éléments du tableau.
+La tâche est la suivante : trouver le sous-tableau contigu de arr avec la somme maximale des items.
 
-P.S. Un zéro 0 est un nombre valide, donc s’il vous plaît n’arrêtez pas l’entrée sur zéro.
-*/
+Écrire la fonction getMaxSubSum(arr) qui retournera cette somme.
 
-let sum = [];
+Par exemple :
 
-let sumInput ={
-    do{
-        sumInput = +prompt("Entrer un chiffre", 0),
-        sum = sumInput
-    },while(sumInput != null || sumInput != undifined);
-} 
+getMaxSubSum([-1, 2, 3, -9]) == 5 (la somme des éléments en surbrillance)
+getMaxSubSum([2, -1, 2, 3, -9]) == 6
+getMaxSubSum([-1, 2, 3, -9, 11]) == 11
+getMaxSubSum([-2, -1, 1, 2]) == 3
+getMaxSubSum([100, -9, 2, -3, 5]) == 100
+getMaxSubSum([1, 2, 3]) == 6 (prend tout)
 
+Si tous les éléments sont négatifs, cela signifie que nous n’en prenons aucun (le sous-tableau est vide), la somme est donc zéro :
 
-// correction :
+getMaxSubSum([-1, -2, -3]) = 0
 
-function sumInput() {
+S’il vous plaît essayez de penser à une solution rapide : O(n2) ou même à O(n) si vous le pouvez. 
+ */
 
-    let numbers = [];
+let arr = [1, -2, 3, 4, -9, 6];
+
+let getMaxSubSum = 0;
+
+for (let nombre of arr){
+
+}
+
+// solution 1 :
+
+function getMaxSubSum(arr) {
+    let maxSum = 0; // si on ne prend aucun élément, zéro sera retourné
   
-    while (true) {
-  
-      let value = prompt("A number please?", 0);
-  
-      // devrions-nous annuler ?
-      if (value === "" || value === null || !isFinite(value)) break;
-  
-      numbers.push(+value);
+    for (let i = 0; i < arr.length; i++) {
+      let sumFixedStart = 0;
+      for (let j = i; j < arr.length; j++) {
+        sumFixedStart += arr[j];
+        maxSum = Math.max(maxSum, sumFixedStart);
+      }
     }
   
-    let sum = 0;
-    for (let number of numbers) {
-      sum += number;
-    }
-    return sum;
+    return maxSum;
   }
   
-  alert( sumInput() );
+  alert( getMaxSubSum([-1, 2, 3, -9]) ); // 5
+  alert( getMaxSubSum([-1, 2, 3, -9, 11]) ); // 11
+  alert( getMaxSubSum([-2, -1, 1, 2]) ); // 3
+  alert( getMaxSubSum([1, 2, 3]) ); // 6
+  alert( getMaxSubSum([100, -9, 2, -3, 5]) ); // 100
+
+
+  // solution 2 :
+
+  function getMaxSubSum(arr) {
+    let maxSum = 0;
+    let partialSum = 0;
+  
+    for (let item of arr) { // pour chaque élément d'arr
+      partialSum += item; // l'ajouter à partialSum
+      maxSum = Math.max(maxSum, partialSum); // mémorise le maximum
+      if (partialSum < 0) partialSum = 0; // zéro si négatif
+    }
+  
+    return maxSum;
+  }
+  
+  alert( getMaxSubSum([-1, 2, 3, -9]) ); // 5
+  alert( getMaxSubSum([-1, 2, 3, -9, 11]) ); // 11
+  alert( getMaxSubSum([-2, -1, 1, 2]) ); // 3
+  alert( getMaxSubSum([100, -9, 2, -3, 5]) ); // 100
+  alert( getMaxSubSum([1, 2, 3]) ); // 6
+  alert( getMaxSubSum([-1, -2, -3]) ); // 0
